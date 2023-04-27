@@ -1,13 +1,12 @@
+FROM ubuntu:latest AS build
 
-FROM openjdk:17-jdk-alpine
+RUN apt-get update
+RUN apt-get install openjdk-17-jdk -y
+COPY . .
 
-WORKDIR /app
+RUN ./gradlew bootJar --no-daemon
 
-COPY build.gradle .
-COPY src src
-COPY gradle gradle
-
-RUN ./gradlew build
+FROM openjdk:17-jdk-slim
 
 COPY build/libs/demo-1.jar ejercicio-saludo.jar
 
