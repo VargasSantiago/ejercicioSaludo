@@ -1,5 +1,5 @@
 
-FROM openjdk:17
+FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
 
@@ -9,8 +9,8 @@ COPY gradle gradle
 
 RUN ./gradlew build
 
-COPY build/libs/demo-1.jar UdaApplication.jar
+COPY build/libs/demo-1.jar ejercicio-saludo.jar
 
 EXPOSE 9000
 
-CMD ["java", "-jar", "UdaApplication.jar"]
+CMD ["java", "-jar", "ejercicio-saludo.jar"]
