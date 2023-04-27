@@ -1,4 +1,4 @@
-# Usa la imagen de Java 17
+
 FROM openjdk:17
 
 WORKDIR /app
